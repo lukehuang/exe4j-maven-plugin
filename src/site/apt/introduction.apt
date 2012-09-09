@@ -1,0 +1,41 @@
+                                   ------
+                             Exe4J Plugin Usage
+                                    ------
+                                John Allen
+                                    ------
+                                 Nov 15, 2005
+
+Maven 2 Exe4J Plugin
+
+  This plugin provides the features of {{{http://www.ej-technologies.com/products/exe4j/overview.html}Exe4J}} 
+  within the maven 2 environment.
+
+* What is Exe4J
+  
+  "Exe4j is a Java exe maker that helps you integrate your Java applications into the Windows operating environment, 
+  whether they are service, GUI or command line applications. If you want your own process name instead of 
+  java.exe in the task manager and a user friendly task-bar grouping in Windows XP, exe4j does the job. 
+  exe4j helps you with starting your Java applications in a safe way, displaying native splash screens, detecting 
+  or distributing suitable JREs and JDKs, startup error handling and much more."
+
+* How to Use Exe4J plugin
+
+  Using the plugin is very easy, simply define the plugin's {{{howto.html}configuration}} in your project POM and then 
+  execute the plugin thus:
+
+-------------------
+  mvn exe4j:exe4j
+-------------------
+
+  Alternatively if you already have an externally defined exe4j config file or for some reason do not wish to
+  define all of your exe4j settings in your POM you may configure the plugin to use an existing external
+  config file and simply run:
+  
+-------------------
+  mvn exe4j:execute
+-------------------
+  
+  Please note that the plugin does not come bundled with the Exe4J compiler so you will need to 
+  download and install it from the vendors {{{http://www.ej-technologies.com/products/exe4j/overview.html}website}} 
+  before running the Exe4J plugin. Currently the plugin has only been tested with Ex4J version 3.1.
+

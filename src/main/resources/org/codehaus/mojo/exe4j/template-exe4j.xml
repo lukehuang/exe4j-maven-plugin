@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exe4j version="3.1">
+	<directoryPresets
+		config="${distributionSourceDirectory}" />
+	<application 
+		name="${applicationShortName}"
+		distributionSourceDir="${distributionSourceDirectory}" />
+	<executable 
+		name="${executableName}" 
+		type="${jarExeMode}" 
+		iconSet="${useExecutableIcon}"
+		iconFile="${executableIconFile}"
+		executableDir="${executableDirectory}"
+		redirectStderr="${redirectStdErr}" 
+		stderrFile="${stdErrRedirectionFile}"
+		redirectStdout="${redirectStdOut}" 
+		stdoutFile="${stdOutRedirectionFile}"
+		failOnStderrOutput="true" 
+		executableMode="${executableMode}"
+		changeWorkingDirectory="true" 
+		workingDirectory="${workingDirectory}"
+		singleInstance="${singleInstanceOnly}" 
+		serviceStartType="2" 
+		serviceDependencies=""
+		serviceDescription="" 
+		jreLocation="">
+		<!--  TODO -->
+		<messageSet language="English">
+			<message id="JVM_IN_PATH"
+				text="The JVM found in your path is damaged.\nPlease reinstall or define EXE4J_JAVA_HOME\nto point to an installed JDK or JRE." />
+			<message id="JVM_ENV_VAR"
+				text="The %ENV_VAR_NAME% envionment variable does not\npoint to a working JDK or JRE." />
+			<message id="JVM_DEFINED_PATH"
+				text="The JVM found at %DEFINED_PATH% is damaged.\nPlease reinstall or define EXE4J_JAVA_HOME\nto point to an installed JDK or JRE." />
+			<message id="JVM_START"
+				text="The JVM could not be started. The main method may have thrown an exception." />
+			<message id="FILE_NOT_FOUND"
+				text="File or directory %FILE_NAME% not found or empty\n" />
+			<message id="WRONG_PARAMETERS"
+				text="Wrong Parameter Usage" />
+			<message id="ENV_VAR_NOT_DEFINED"
+				text="The environment variable %ENV_VAR_NAME% has to be defined" />
+			<message id="INTERNAL_ERROR"
+				text="An internal error occurred (error code: %ERROR_CODE%)" />
+			<message id="ERROR_DIALOG_CAPTION" text="Error" />
+			<message id="ERROR_DIALOG_OK" text="Ok" />
+			<message id="ERROR_DIALOG_TEXT"
+				text="An error occurred while starting up %APPLICATION_NAME%:" />
+			<message id="MAIN_CLASS_NOT_FOUND"
+				text="Couldn't load main class." />
+			<message id="MAIN_METHOD_NOT_FOUND"
+				text="Main method not found." />
+			<message id="MESSAGE_BOX_TITLE" text="Error" />
+			<message id="NO_JVM_FOUND"
+				text="No JVM could be found on your system.\nPlease define EXE4J_JAVA_HOME\nto point to an installed JDK or JRE or download a JRE from www.java.com." />
+		</messageSet>
+		<versionInfo 
+			include="${generateVersionInfo}" 
+			fileVersion="${fileVersion}" 
+			companyName="${companyName}"
+			fileDescription="${fileDescription}"
+			legalCopyright="${legalCopyrightText}" 
+			productVersion="${productVersion}"
+			internalName="${applicationShortInternalName}" />
+	</executable>
+	<splashScreen 
+		show="${useSplashScreen}" 
+		autoOff="${hideSplashScreenOnStart}" 
+		alwaysOnTop="${splashScreenOnTop}"
+		width="0" 
+		height="0" 
+		bitmapFile="${splashScreenFile}">
+		<text>
+			${statusLine}
+			${versionLine}
+		</text>
+	</splashScreen>
+	<java 
+		mainClass="${mainClass}"
+		vmParameters="${jvmParameters}"
+		arguments="${arguments}" 
+		allowVMPassthroughParameters="${allowJvmPassThrough}"
+		minVersion="${minJavaVersion}" 
+		maxVersion="${maxJavaVersion}" 
+		preferredVM="${preferredVM}" 
+		allowBetaVM="${allowBetaJREs}"
+		jdkOnly="${allowOnlyJDKSs}">
+		${jreSearchSequence}
+		${classPath}
+		${nativeLibraries}
+	</java>
+	<includedFiles />
+</exe4j>
+

@@ -1,0 +1,82 @@
+/*
+ * Copyright 2005 John H Allen.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * 
+ */
+package org.codehaus.mojo.exe4j.configuration;
+
+import org.codehaus.plexus.configuration.PlexusConfigurationException;
+
+/**
+ * Configuration class for the jar exe mode.
+ * 
+ * @author <a href="mailto:john_h_allen@hotmail.com">John Allen</a>
+ */
+public class ConfigJarExeMode
+{
+    /**
+     * Defines the legal values that the jar exe mode can hold.
+     */
+    private static final ConfigEnumType TYPE_DEFINITION = new ConfigEnumType( new ConfigEnumType.Value[] {
+        new ConfigEnumType.Value( "external", "1" ),
+        new ConfigEnumType.Value( "internal", "0" ) } );
+
+    private String value;
+
+    public ConfigJarExeMode()
+    {
+    }
+
+    /**
+     * constructor that initialise the config class to the supplied 
+     * ConfigEnum identified by the supplied identifier
+     *
+     * @param identifier the enum value, see TYPE_DEFINITION for details
+     * @throws PlexusConfigurationException
+     */
+    public ConfigJarExeMode( String identifier )
+        throws PlexusConfigurationException
+    {
+        setValue( identifier );
+    }
+
+    public String toString()
+    {
+        return value;
+    }
+
+    /**
+     * value accessor
+     * @return Returns the value.
+     */
+    public String getValue()
+    {
+        return value;
+    }
+
+    /**
+     * value mutator
+     * @param value The value to set.
+     * @throws PlexusConfigurationException 
+     */
+    public void setValue( String identifier )
+        throws PlexusConfigurationException
+    {
+        this.value = TYPE_DEFINITION.getValue( identifier ).toString();
+    }
+
+}

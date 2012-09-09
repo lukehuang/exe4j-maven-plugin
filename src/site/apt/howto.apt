@@ -1,0 +1,197 @@
+                                    ------
+                             Exe4J Plugin Usage
+                                    ------
+                                John Allen
+                                    ------
+                                 Nov 15, 2005
+
+How to Use Exe4J plugin
+
+* Plugin Invocation 
+
+  Using the plugin is very easy, simply define the plugin's {{{howto.html}configuration}} in your project POM and then 
+  execute the plugin thus:
+
+-------------------
+  mvn exe4j:exe4j
+-------------------
+
+  Alternatively if you already have an externally defined exe4j config file or for some reason do not wish to to 
+  define all of your exe4j settings in your POM you may configure the plugin to use an existing external
+  config file and simply run:
+  
+-------------------
+  mvn exe4j:execute
+-------------------
+
+* Plugin Configuration
+
+  For more information regarding these plugin parameters please refer to 
+  the exe4j plugin {{{plugin-info.html}documentation}}.
+
+* A very simple configuration 
+
+  This configuration is probably inappropriate for real world use as it relies upon too many defaults
+  but for testing should get you started.
+
+------
+<project>
+  ...
+  <build> 
+    <plugins>
+      </plugin>    
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exe4j-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>exe4j</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <mainClass>
+            com.example.app.App
+          </mainClass>
+          <exe4jcExe>
+            D:\Exe4j\bin\exe4jc.exe
+          </exe4jcExe>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  ...
+</project>
+------
+
+* A more complete example.
+
+-----
+<project>
+  ...
+  <build>
+    <plugins>
+      </plugin>    
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exe4j-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>exe4j</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <jarExeMode>
+            external
+          </jarExeMode>
+          <executableMode>
+            gui
+          </executableMode>
+          <useExecutableIcon>
+            true
+          </useExecutableIcon>
+          <executableIconFile>
+            ${basedir}\src\exe4j\resources\icons\icon.ico
+          </executableIconFile>
+          <mainClass>
+            com.example.app.App
+          </mainClass>
+          <exe4jcExe>
+            D:\Exe4j\bin\exe4jc.exe
+          </exe4jcExe>
+          <distributionSourceDirectory>
+            ${project.build.directory}
+          </distributionSourceDirectory>
+          <executableDirectory>
+            bin
+          </executableDirectory>
+          <outputConfigFile>
+            ${project.build.dir}\exe4j\exe4j.xml
+          </outputConfigFile>
+          <jvmParameters>
+            -Dcom.foo.bar="all your"
+          </jvmParameters>
+          <arguments>
+            --belong "us"
+          </arguments>
+          <classPath>
+            <directory failNotFound="true">clasess</directory>
+            <scanDirectory failNotFound="false">lib</scanDirectory>
+            <archive failIfNotFound="true">
+            	libs/${project.artifactId}-${project.version}.jar
+            </archive>
+            <envVar>MY_VAR</envVar>
+          </classPath>
+          <jreSearchPath>
+            <registry/>
+            <envVar>JAVA_HOME</envVar>
+            <envVar>JDK_HOME</envVar>
+            <directory>C:\Java</directory>
+          </jreSearchPath>
+          <nativeLibraryDirectories>
+            <directory>.</directory>
+            <directory>libs</directory>
+          </nativeLibraryDirectories>
+          <useSplashScreen>
+            true
+          </useSplashScreen>
+          <bitmapFile>
+            ${basedir}\src\exe4j\resources\images\splashScreen.png
+          </bitmapFile>
+          <statusLine xPos="20" yPos="20" text="Status Line" font="Arial" fontSize="8" fontColour="0.0.0" fontWeight="500"/>
+          <versionLine xPos="20" yPos="40" text="VERSION: %VERSION%" font="Arial" fontSize="8" fontColour="0.0.0" fontWeight="500"/>
+          <trailRun>
+            false
+          </trailRun>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  ...
+</project>
+-----
+
+
+* Example using an external ex4j configuration file instead of POM defined setup
+
+-----
+<project>
+  ...
+  <build>
+    <plugins>
+      </plugin>    
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exe4j-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>exe4j</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <exe4jcExe>
+            D:\Exe4j\bin\exe4jc.exe
+          </exe4jcExe>
+          <configFile>
+            ${basedir}\src\exe4j\exe4j.xml
+          </configFile>
+          <trailRun>
+            false
+          </trailRun>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  ...
+</project>
+-----
+  
+  
