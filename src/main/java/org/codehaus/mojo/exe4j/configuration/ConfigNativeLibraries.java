@@ -112,7 +112,7 @@ public class ConfigNativeLibraries
 
         while ( itr.hasNext() )
         {
-            JREPathLocation location = (JREPathLocation) itr.next();
+            NativeLibraryLocation location = (NativeLibraryLocation) itr.next();
 
             buffer.append( location.toString() );
         }
